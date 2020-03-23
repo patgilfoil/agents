@@ -2,12 +2,17 @@
 
 void Agent::update(float deltaTime)
 {
-	//Set force to 0
+	Vector2 force = {0,0};
 	//For each Behaviour in Behavior list
-		//Call the Behavior's update function 
+	for (std::vector<Behavior*>::iterator iter = m_BehaviorList.begin(); iter != m_BehaviorList.end(); ++iter) {
+		//Call the Behavior's update function
 		//Add returned value to total force
+		force += (*iter)->update(this, GetFrameTime());
+	}
 	//Add force multiplied by delta time to velocity
+	m_Velocity = force * GetFrameTime();
 	//Add velocity times delta time to position
+	m_Position = m_Velocity * GetFrameTime();
 }
 
 void Agent::draw()

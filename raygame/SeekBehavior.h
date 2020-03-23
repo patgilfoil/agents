@@ -9,7 +9,7 @@ public:
 
 	virtual Vector2 update(Agent* agent, float deltaTime);
 
-	void setTarget(Agent* agent);
+	void setTarget(Agent* agent) { m_target = agent; }
 
 private:
 	Agent* m_target;

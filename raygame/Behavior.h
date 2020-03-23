@@ -4,7 +4,7 @@
 class Behavior
 {
 public:
-	Behavior();
+	Behavior() {}
 	virtual ~Behavior() {}
 
 	virtual Vector2 update(Agent* agent, float deltaTime) = 0;
