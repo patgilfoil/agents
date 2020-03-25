@@ -14,7 +14,10 @@ void Agent::update(float deltaTime)
 	//Add force multiplied by delta time to velocity
 	addForce(totalForce * deltaTime);
 	//Add velocity times delta time to position
-	m_Position = m_Velocity * GetFrameTime();
+	if (m_Velocity.magnitude() > m_maxSpeed) {
+		m_Velocity = m_Velocity.normalize() * m_maxSpeed;
+	}
+	m_Position += m_Velocity * GetFrameTime();
 }
 
 void Agent::draw()

@@ -26,6 +26,7 @@ public:
 protected:
 	std::vector<Behavior*> m_BehaviorList;
 
+	float m_maxSpeed = 200.0f;
 	Vector2 m_Position;
 	Vector2 m_Velocity;
 };

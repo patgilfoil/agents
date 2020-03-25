@@ -15,6 +15,7 @@
 #include "KeyboardBehavior.h"
 #include "SeekBehavior.h"
 #include "FleeBehavior.h"
+#include "WanderBehavior.h"
 
 int main()
 {
@@ -34,8 +35,8 @@ int main()
 
 	Agent* enemy = new Agent();
 	enemy->setPosition({ 500.0f, 500.0f });
-	SeekBehavior* seekBehavior = new SeekBehavior();
-	seekBehavior->setTarget(player);
+	WanderBehavior* seekBehavior = new WanderBehavior();
+	//seekBehavior->setTarget(player);
 	enemy->addBehavior(seekBehavior);
 	//--------------------------------------------------------------------------------------
 
