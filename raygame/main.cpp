@@ -14,6 +14,7 @@
 #include "Behavior.h"
 #include "KeyboardBehavior.h"
 #include "SeekBehavior.h"
+#include "FleeBehavior.h"
 
 int main()
 {

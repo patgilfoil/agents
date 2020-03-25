@@ -1,16 +1,18 @@
 #include "Agent.h"
+#include "Behavior.h"
 
 void Agent::update(float deltaTime)
 {
-	Vector2 force = {0,0};
+	Vector2 totalForce = {0,0};
 	//For each Behaviour in Behavior list
-	for (std::vector<Behavior*>::iterator iter = m_BehaviorList.begin(); iter != m_BehaviorList.end(); ++iter) {
+	for (auto i = m_BehaviorList.begin(); i != m_BehaviorList.end(); i++) {
 		//Call the Behavior's update function
+		Vector2 force = (*i)->update(this, deltaTime);
 		//Add returned value to total force
-		force += (*iter)->update(this, GetFrameTime());
+		totalForce += force;
 	}
 	//Add force multiplied by delta time to velocity
-	m_Velocity = force * GetFrameTime();
+	addForce(totalForce * deltaTime);
 	//Add velocity times delta time to position
 	m_Position = m_Velocity * GetFrameTime();
 }
@@ -22,5 +24,9 @@ void Agent::draw()
 
 void Agent::addBehavior(Behavior * behavior)
 {
-	m_BehaviorList.push_back(behavior);
+	m_BehaviorList.insert(m_BehaviorList.end(), behavior);
+}
+
+void Agent::addForce(Vector2 force) {
+	m_Velocity += force;
 }

@@ -1,7 +1,6 @@
-#include "SeekBehavior.h"
+#include "FleeBehavior.h"
 
-Vector2 SeekBehavior::update(Agent* agent, float deltaTime)
-{
+Vector2 FleeBehavior::update(Agent* agent, float deltaTime) {
 	//If the target is null
 	if (agent = nullptr) {
 		//Return a zero vector
@@ -19,6 +18,6 @@ Vector2 SeekBehavior::update(Agent* agent, float deltaTime)
 	direction = direction * 250.0f;
 	//Subtract the Agent's current velocity from the result to get the force we need to apply
 	Vector2 force = direction - agent->getVelocity();
-	
+
 	return force;
 }

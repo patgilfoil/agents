@@ -15,6 +15,7 @@ public:
 	virtual void draw();
 
 	void addBehavior(Behavior* behavior);
+	void addForce(Vector2 force);
 
 	Vector2 getPosition() { return m_Position; }
 	void setPosition(Vector2 position) { m_Position = position; }
