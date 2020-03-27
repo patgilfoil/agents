@@ -1,6 +1,8 @@
 #pragma once
 #include "Agent.h"	
 
+enum eBehaviorResult { FAILURE, SUCCESS };
+
 class Behavior
 {
 public:
