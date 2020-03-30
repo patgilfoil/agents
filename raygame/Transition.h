@@ -1,8 +1,8 @@
 #pragma once
+#include "Agent.h"
 #include "Condition.h"
 
 class State;
-class GameObject;
 
 class Transition
 {
@@ -12,8 +12,8 @@ public:
 
 	State* getTargetState() { return m_target; }
 
-	bool hasTriggered(GameObject* gameObject) {
-		return m_condition->test(gameObject);
+	bool hasTriggered(Agent* agent) {
+		return m_condition->test(agent);
 	}
 
 private:

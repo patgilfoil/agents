@@ -5,7 +5,7 @@ Vector2 SeekBehavior::update(Agent* agent, float deltaTime)
 	//If the target is null
 	if (agent == nullptr) {
 		//Return a zero vector
-		return Vector2({ 0,0 });
+		return Vector2({ 0.0f,0.0f });
 	}
 	//Get the Agent's position
 	Vector2 agentPos = agent->getPosition();

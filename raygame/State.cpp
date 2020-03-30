@@ -1,8 +1,10 @@
 #include "State.h"
+#include "Transition.h"
 
-Transition* State::getTriggeredTransition(GameObject* gameObject) { 
+Transition* State::getTriggeredTransition(Agent* agent) { 
 	for (auto transition : m_transitions) { 
-		if (transition->hasTriggered(gameObject)) return transition; 
+		if (transition->hasTriggered(agent)) 
+			return transition; 
 	} 
 	return nullptr; 
 }

@@ -3,11 +3,11 @@
 
 void Agent::update(float deltaTime)
 {
-	Vector2 totalForce = {0,0};
+	Vector2 totalForce = {0.0f,0.0f};
 	//For each Behaviour in Behavior list
 	for (auto i = m_BehaviorList.begin(); i != m_BehaviorList.end(); i++) {
 		//Call the Behavior's update function
-		Vector2 force = (*i)->update(this, deltaTime);
+		Vector2 force = (*i)->execute(this, deltaTime);
 		//Add returned value to total force
 		totalForce += force;
 	}

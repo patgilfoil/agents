@@ -30,14 +30,14 @@ int main()
 
 	Agent* player = new Agent();
 	player->setPosition({ 100.0f, 100.0f });
-	KeyboardBehavior* keyboardBehavior = new KeyboardBehavior();
-	player->addBehavior(keyboardBehavior);
+	//KeyboardBehavior* keyboardBehavior = new KeyboardBehavior();
+	//player->addBehavior(keyboardBehavior);
 
 	Agent* enemy = new Agent();
 	enemy->setPosition({ 500.0f, 500.0f });
-	WanderBehavior* seekBehavior = new WanderBehavior();
+	//WanderBehavior* seekBehavior = new WanderBehavior();
 	//seekBehavior->setTarget(player);
-	enemy->addBehavior(seekBehavior);
+	//enemy->addBehavior(seekBehavior);
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop

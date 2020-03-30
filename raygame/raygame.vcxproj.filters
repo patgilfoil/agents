@@ -39,7 +39,7 @@
     <ClCompile Include="Condition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
+    <ClCompile Include="FiniteStateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,7 +71,7 @@
     <ClInclude Include="Condition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
+    <ClInclude Include="FiniteStateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
