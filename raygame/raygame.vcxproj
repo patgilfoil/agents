@@ -133,6 +133,8 @@
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="AttackState.cpp" />
+    <ClCompile Include="BooleanDecision.cpp" />
+    <ClCompile Include="DecisionBehavior.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FleeBehavior.cpp" />
     <ClCompile Include="KeyboardBehavior.cpp" />
@@ -146,7 +148,10 @@
     <ClInclude Include="Agent.h" />
     <ClInclude Include="AttackState.h" />
     <ClInclude Include="Behavior.h" />
+    <ClInclude Include="BooleanDecision.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="Decision.h" />
+    <ClInclude Include="DecisionBehavior.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="FleeBehavior.h" />
     <ClInclude Include="IdleState.h" />

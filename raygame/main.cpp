@@ -30,6 +30,7 @@ int main()
 
 	Agent* player = new Agent();
 	player->setPosition({ 100.0f, 100.0f });
+	player->setSpeed(300.0f);
 	KeyboardBehavior* keyboardBehavior = new KeyboardBehavior();
 	player->addBehavior(keyboardBehavior);
 
@@ -49,6 +50,7 @@ int main()
 	enemyFSM->addTransition(toAttackTransition);
 	idleState->addTransition(toAttackTransition);
 	enemyFSM->setCurrentState(idleState);
+	enemy->addBehavior(enemyFSM);
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop

@@ -1,10 +1,10 @@
 #include "FleeBehavior.h"
 
-Vector2 FleeBehavior::update(Agent* agent, float deltaTime) {
+void FleeBehavior::update(Agent* agent, float deltaTime) {
 	//If the target is null
 	if (agent == nullptr) {
 		//Return a zero vector
-		return Vector2({ 0.0f,0.0f });
+		return;
 	}
 	//Get the Agent's position
 	Vector2 agentPos = agent->getPosition();
@@ -15,9 +15,9 @@ Vector2 FleeBehavior::update(Agent* agent, float deltaTime) {
 	Vector2 direction = agentPos - targetPos;
 	direction = direction.normalize();
 	//Multiply the direction by the speed we want to move
-	direction = direction * 250;
+	direction = direction * agent->getSpeed();
 	//Subtract the Agent's current velocity from the result to get the force we need to apply
 	Vector2 force = direction - agent->getVelocity();
 
-	return force;
+	agent->addForce(force * deltaTime);
 }

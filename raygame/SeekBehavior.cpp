@@ -1,11 +1,11 @@
 #include "SeekBehavior.h"
 
-Vector2 SeekBehavior::update(Agent* agent, float deltaTime)
+void SeekBehavior::update(Agent* agent, float deltaTime)
 {
 	//If the target is null
 	if (agent == nullptr) {
 		//Return a zero vector
-		return Vector2({ 0.0f,0.0f });
+		return;
 	}
 	//Get the Agent's position
 	Vector2 agentPos = agent->getPosition();
@@ -20,5 +20,5 @@ Vector2 SeekBehavior::update(Agent* agent, float deltaTime)
 	//Subtract the Agent's current velocity from the result to get the force we need to apply
 	Vector2 force = direction - agent->getVelocity();
 	
-	return force;
+	agent->addForce(force * deltaTime);
 }

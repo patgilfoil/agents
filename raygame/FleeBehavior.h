@@ -6,7 +6,7 @@ public:
 	FleeBehavior() {}
 	virtual ~FleeBehavior() {}
 
-	virtual Vector2 update(Agent* agent, float deltaTime);
+	virtual void update(Agent* agent, float deltaTime);
 	void setTarget(Agent* target) { m_target = target; }
 
 private:

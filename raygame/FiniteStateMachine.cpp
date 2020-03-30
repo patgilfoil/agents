@@ -2,10 +2,10 @@
 #include "State.h"
 #include "Transition.h"
 
-Vector2 FiniteStateMachine::update(Agent * agent, float deltaTime)
+void FiniteStateMachine::update(Agent * agent, float deltaTime)
 {
-	if (m_currentState != nullptr) { 
-		return Vector2{ 0.0f,0.0f };
+	if (m_currentState == nullptr) { 
+		return;
 	} 
 	Transition* transition = m_currentState->getTriggeredTransition(agent);
 	if (transition != nullptr) {
@@ -14,5 +14,4 @@ Vector2 FiniteStateMachine::update(Agent * agent, float deltaTime)
 		m_currentState->init(agent);
 	}
 	m_currentState->update(agent, deltaTime);
-	return Vector2{ 0.0f,0.0f };
 }

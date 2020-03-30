@@ -5,7 +5,7 @@ class State;
 class Transition;
 class Condition;
 
-class FiniteStateMachine
+class FiniteStateMachine : public Behavior
 {
 public:
 	FiniteStateMachine() : m_currentState(nullptr) {}
@@ -19,7 +19,7 @@ public:
 	void addTransition(Transition* transition) { m_transitions.push_back(transition); }
 	void addCondition(Condition* condition) { m_conditions.push_back(condition); }
 	void setCurrentState(State* state) { m_currentState = state; }
-	virtual Vector2 update(Agent* agent, float deltaTime);
+	virtual void update(Agent* agent, float deltaTime);
 
 protected:
 	std::vector<State*> m_states;
