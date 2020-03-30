@@ -10,12 +10,12 @@
 ********************************************************************************************/
 
 #include "raylib.h"
-#include "Agent.h"
-#include "Behavior.h"
 #include "KeyboardBehavior.h"
-#include "SeekBehavior.h"
-#include "FleeBehavior.h"
-#include "WanderBehavior.h"
+#include "Transition.h"
+#include "IdleState.h"
+#include "AttackState.h"
+#include "WithinRangeCondition.h"
+#include "FiniteStateMachine.h"
 
 int main()
 {
@@ -30,14 +30,25 @@ int main()
 
 	Agent* player = new Agent();
 	player->setPosition({ 100.0f, 100.0f });
-	//KeyboardBehavior* keyboardBehavior = new KeyboardBehavior();
-	//player->addBehavior(keyboardBehavior);
+	KeyboardBehavior* keyboardBehavior = new KeyboardBehavior();
+	player->addBehavior(keyboardBehavior);
 
 	Agent* enemy = new Agent();
 	enemy->setPosition({ 500.0f, 500.0f });
-	//WanderBehavior* seekBehavior = new WanderBehavior();
-	//seekBehavior->setTarget(player);
-	//enemy->addBehavior(seekBehavior);
+	enemy->setSpeed(250.0f);
+	enemy->setColor(GRAY);
+
+	FiniteStateMachine* enemyFSM = new FiniteStateMachine();
+	IdleState* idleState = new IdleState();
+	enemyFSM->addState(idleState);
+	AttackState* attackState = new AttackState(player, 250.0f);
+	enemyFSM->addState(attackState);
+	WithinRangeCondition* enemyRangeCond = new WithinRangeCondition(player, 250.0f);
+	enemyFSM->addCondition(enemyRangeCond);
+	Transition* toAttackTransition = new Transition(attackState, enemyRangeCond);
+	enemyFSM->addTransition(toAttackTransition);
+	idleState->addTransition(toAttackTransition);
+	enemyFSM->setCurrentState(idleState);
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop

@@ -15,9 +15,9 @@ public:
 		for (Condition* c : m_conditions) delete c;
 	}
 
-	State* addState(State* state) { m_states.push_back(state); }
-	Transition* addTransition(Transition* transition) { m_transitions.push_back(transition); }
-	Condition* addCondition(Condition* condition) { m_conditions.push_back(condition); }
+	void addState(State* state) { m_states.push_back(state); }
+	void addTransition(Transition* transition) { m_transitions.push_back(transition); }
+	void addCondition(Condition* condition) { m_conditions.push_back(condition); }
 	void setCurrentState(State* state) { m_currentState = state; }
 	virtual Vector2 update(Agent* agent, float deltaTime);
 

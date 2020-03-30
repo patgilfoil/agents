@@ -7,7 +7,8 @@ class State;
 class Transition
 {
 public:
-	Transition(State* target, Condition* condition) : m_target(target), m_condition(condition) {}
+	Transition(State* target, Condition* condition) 
+		: m_target(target), m_condition(condition) {}
 	~Transition() {}
 
 	State* getTargetState() { return m_target; }

@@ -7,7 +7,7 @@ void Agent::update(float deltaTime)
 	//For each Behaviour in Behavior list
 	for (auto i = m_BehaviorList.begin(); i != m_BehaviorList.end(); i++) {
 		//Call the Behavior's update function
-		Vector2 force = (*i)->execute(this, deltaTime);
+		Vector2 force = (*i)->update(this, deltaTime);
 		//Add returned value to total force
 		totalForce += force;
 	}

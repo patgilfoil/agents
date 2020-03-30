@@ -132,7 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
-    <ClCompile Include="Condition.cpp" />
+    <ClCompile Include="AttackState.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FleeBehavior.cpp" />
     <ClCompile Include="KeyboardBehavior.cpp" />
@@ -140,18 +140,22 @@
     <ClCompile Include="SeekBehavior.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="WanderBehavior.cpp" />
+    <ClCompile Include="WithinRangeCondition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
+    <ClInclude Include="AttackState.h" />
     <ClInclude Include="Behavior.h" />
     <ClInclude Include="Condition.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="FleeBehavior.h" />
+    <ClInclude Include="IdleState.h" />
     <ClInclude Include="KeyboardBehavior.h" />
     <ClInclude Include="SeekBehavior.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="WanderBehavior.h" />
+    <ClInclude Include="WithinRangeCondition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
