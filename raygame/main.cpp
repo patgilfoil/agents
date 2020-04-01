@@ -10,12 +10,20 @@
 ********************************************************************************************/
 
 #include "raylib.h"
-#include "KeyboardBehavior.h"
+#include "Agent.h"
 #include "Transition.h"
+#include "KeyboardBehavior.h"
+#include "ScreenEdgeBehavior.h"
+#include "WanderBehavior.h"
+#include "SeekBehavior.h"
+#include "PursuitBehavior.h"
+#include "FiniteStateMachine.h" 
 #include "IdleState.h"
 #include "AttackState.h"
 #include "WithinRangeCondition.h"
-#include "FiniteStateMachine.h"
+#include "DecisionTreeBehavior.h"
+#include "BooleanDecision.h"
+#include "BehaviorDecision.h"
 
 int main()
 {
@@ -33,6 +41,8 @@ int main()
 	player->setSpeed(300.0f);
 	KeyboardBehavior* keyboardBehavior = new KeyboardBehavior();
 	player->addBehavior(keyboardBehavior);
+	ScreenEdgeBehavior* screenEdgeBehavior = new ScreenEdgeBehavior();
+	player->addBehavior(screenEdgeBehavior);
 
 	Agent* enemy = new Agent();
 	enemy->setPosition({ 500.0f, 500.0f });
@@ -50,7 +60,27 @@ int main()
 	enemyFSM->addTransition(toAttackTransition);
 	idleState->addTransition(toAttackTransition);
 	enemyFSM->setCurrentState(idleState);
-	enemy->addBehavior(enemyFSM);
+
+	//Leaves
+	WanderBehavior* wanderBehavior = new WanderBehavior();
+	BehaviorDecision* wanderDecision = new BehaviorDecision(wanderBehavior);
+	SeekBehavior* seekBehavior = new SeekBehavior();
+	seekBehavior->setTarget(player);
+	BehaviorDecision* seekDecision = new BehaviorDecision(seekBehavior);
+	PursuitBehavior* pursuitBehavior = new PursuitBehavior();
+	pursuitBehavior->setTarget(player);
+	BehaviorDecision* pursuitDecision = new BehaviorDecision(pursuitBehavior);
+	//Branches
+	WithinRangeCondition* canSeeCondition = new WithinRangeCondition(player, 500);
+	BooleanDecision* canSeeDecision = new BooleanDecision(pursuitDecision, seekDecision, canSeeCondition);
+	WithinRangeCondition* canHearCondition = new WithinRangeCondition(player, 1000);
+	BooleanDecision* canHearDecision = new BooleanDecision(canSeeDecision, wanderDecision, canHearCondition);
+	//Enemy decision tree
+	DecisionTreeBehavior* enemyDecisionTree = new DecisionTreeBehavior(canHearDecision);
+	enemy->addBehavior(enemyDecisionTree);
+	enemy->addBehavior(screenEdgeBehavior);
+
+	//enemy->addBehavior(enemyFSM);
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop

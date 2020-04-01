@@ -1,15 +1,15 @@
 #pragma once
 #include "Behavior.h"
 #include "Decision.h"
-class DecisionBehavior : public Behavior
+
+class DecisionTreeBehavior : public Behavior
 {
 public:
-	DecisionBehavior(Decision* decision) : m_rootDecision(decision) {}
-	virtual ~DecisionBehavior() {}
+	DecisionTreeBehavior(Decision* decision) : m_rootDecision(decision) {}
+	virtual ~DecisionTreeBehavior() {}
 
 	virtual void update(Agent* agent, float deltaTime);
 
 private:
 	Decision* m_rootDecision;
 };
-
